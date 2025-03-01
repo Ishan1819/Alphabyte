@@ -15,14 +15,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Setup Jinja2 Templates
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     return templates.TemplateResponse("upload.html", {"request": request})
 
-# Include API Routes
 app.include_router(router)
 
 if __name__ == "__main__":
